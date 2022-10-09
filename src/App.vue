@@ -1,6 +1,6 @@
 <template>
-  <post-form></post-form>
-  <post-form></post-form>
+  <PostForm @create="createPost"></PostForm>
+  <PostList :posts="posts"></PostList>
 </template>
 
 <script>
@@ -11,15 +11,21 @@ export default {
   name: "App",
   components: {
     PostList,
-    PostForm
+    PostForm,
   },
   data() {
     return {
       posts: [
-        { id: 1, name: "hello", description: "Hello my name" },
-        { id: 2, name: "hello1", description: "Hello my name is Yusuf"},
-        { id: 3, name: "hello2", description: "Hello my name43"},
-      ]
+        { id: 1, title: "hello", desc: "Hello my name" },
+        { id: 2, title: "hello1", desc: "Hello my name is Yusuf" },
+        { id: 3, title: "hello2", desc: "Hello my name43" },
+      ],
+    };
+  },
+  methods: {
+    createPost(post) {
+      console.log(post)
+      this.posts.push(post);
     }
   }
 };
